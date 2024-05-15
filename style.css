@@ -31,4 +31,9 @@ button {
   font-size: 16px;
 }
 
+.betSize {
+  position: absolute;
+  top: 120px;
+}
+
 /*# sourceMappingURL=style.css.map */

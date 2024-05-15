@@ -4,17 +4,17 @@ const totalMoneyDisplay = document.getElementById('totalMoney');
 
 
 const slotMachineIcons = [
-    "🍒", // Cherries
-    "🔔", // Bell
-    "🎰", // Slot Machine
-    "💰", // Money Bag
-    "💎", // Gem Stone
-    "🍀", // Four Leaf Clover (Luck)
-    "💵", // Dollar Banknote
-    "💳", // Credit Card
-    "🃏", // Playing Card
-    "⭐", // Star
-    "7️⃣", // Number 7
+    "🍒","🍒","🍒","🍒","🍒","🍒","🍒","🍒","🍒","🍒", // Cherries
+    "🔔","🔔","🔔","🔔","🔔","🔔","🔔","🔔","🔔","🔔", // Bell
+    "🎰","🎰","🎰","🎰","🎰","🎰","🎰","🎰","🎰","🎰", // Slot Machine
+    "💰","💰","💰","💰","💰","💰","💰","💰","💰","💰", // Money Bag
+    "💎","💎","💎","💎","💎","💎","💎","💎","💎","💎", // Gem Stone
+    "🍀","🍀","🍀","🍀","🍀","🍀","🍀", // Four Leaf Clover (Luck)
+    "💵","💵","💵","💵","💵","💵","💵", // Dollar Banknote
+    "💳","💳","💳","💳","💳","💳","💳", // Credit Card
+    "🃏","🃏","🃏","🃏","🃏", // Playing Card
+    "⭐","⭐","⭐","⭐","⭐", // Star
+    "7️⃣","7️⃣","7️⃣", // Number 7
 ];
 let totalMoney = 1000; // Initial total money
 updateTotalMoneyDisplay();
@@ -76,9 +76,22 @@ function spin() {
         }
     }, intervalTime);
 }
-function calculatePayout(results) {
-    // Implement your payout logic based on the spin results
-    // For simplicity, let's assume no payout for now
+function calculatePayout(results, betAmount) {
+    // Check if the icons in the middle row are the same
+    const middleRow = [results[3], results[4], results[5]];
+    const middleRowIcons = new Set(middleRow);
+    if (middleRowIcons.size === 1) {
+        const icon = middleRow[0];
+        if (icon === "🍒" || icon === "🔔" || icon === "🎰" || icon === "💰") {
+            return 4 * betAmount;
+        } else if (icon === "💎" || icon === "🍀" || icon === "💵" || icon === "💳") {
+            return 5 * betAmount;
+        } else if (icon === "🃏" || icon === "⭐") {
+            return 8 * betAmount;
+        } else if (icon === "7️⃣") {
+            return 200 * betAmount;
+        }
+    }
     return 0;
 }
 function updateTotalMoneyDisplay() {
