@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px); /* Define three rows */
+  grid-gap: 10px;
+}
+
+.slot {
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 2em;
+  padding: 10px;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+input[type="number"],
+button {
+  padding: 5px 10px;
+  font-size: 16px;
+}
